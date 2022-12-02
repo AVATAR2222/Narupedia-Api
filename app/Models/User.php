@@ -13,6 +13,7 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
 
     protected $guarded = ['id'];
+    protected $with    = ['avatar_url'];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -32,4 +33,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function getAvatarUrlAttribute(): string|null
+    {
+        if ($this->avatar_file_name){
+            return asset('avatars/' . $this->avatar_file_name);
+        }
+
+        return null;
+    }
 }

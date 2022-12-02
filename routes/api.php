@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 
+Route::get('avatars', fn() => (new \App\Http\Resources\AvatarPhotosResource(null)));
+
 Route::middleware('auth:sanctum')->group(function (){
    Route::get('user', function (){
      return \request()->user();
