@@ -25,10 +25,15 @@ class RegisterRequest extends FormRequest
      *
      * @return array<string, mixed>
      */
-    #[ArrayShape(['username' => "string", 'email' => "string", 'password' => "string"])]
-    public function rules(): array
+    #[ArrayShape([
+        'avatar_file_name' => "string",
+        'username' => "string",
+        'email' => "string",
+        'password' => "string"
+    ])] public function rules(): array
     {
         return [
+            'avatar_file_name' => 'nullable|string',
             'username' => 'required|string|unique:users,username',
             'email' => 'required|email:filter|unique:users,email',
             'password' => 'required|string|min:6'
