@@ -40,6 +40,6 @@ class AuthController extends Controller
             return new Response(['auth' => ['The provided credentials are incorrect.']],422);
         }
 
-        return $user->createToken('api')->plainTextToken;
+        return ['token' => $user->createToken('api')->plainTextToken];
     }
 }

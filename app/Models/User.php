@@ -13,7 +13,7 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
 
     protected $guarded = ['id'];
-    protected $with    = ['avatar_url'];
+    protected $appends = ['avatar_url'];
 
     /**
      * The attributes that should be hidden for serialization.
